@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/journeyFirstFragment"
+    android:id="@+id/talk_back_journey_nav_graph">
+
+    <fragment
+        android:id="@+id/journeyFirstFragment"
+        android:name="com.mialkan.talkbackjourney.fragments.talkback.JourneyFirstFragment"/>
+    <fragment
+        android:id="@+id/journeySecondFragment"
+        android:name="com.mialkan.talkbackjourney.fragments.talkback.JourneySecondFragment"/>
+    <fragment
+        android:id="@+id/journeyThirdFragment"
+        android:name="com.mialkan.talkbackjourney.fragments.talkback.JourneyThirdFragment"/>
+</navigation>

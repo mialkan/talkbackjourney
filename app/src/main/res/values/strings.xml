@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TalkBackJourney</string>
+    <string name="btn_navigate_up" translatable="false">Navigate up</string>
+    <string name="btn_next" translatable="false">Next</string>
+    <string name="btn_previous" translatable="false">Previous</string>
+    <string name="hint_date">Date</string>
+    <string name="compose_talk_back_journey">Start Compose Talk Back Journey</string>
+    <string name="start_talk_back_journey">Start Talk Back Journey</string>
+</resources>
