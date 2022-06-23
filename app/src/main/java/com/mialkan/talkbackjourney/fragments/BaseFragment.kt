@@ -13,6 +13,7 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.button.MaterialButton
 import com.mialkan.talkbackjourney.R
 import com.mialkan.talkbackjourney.extensions.setupToolbar
+import kotlin.random.Random
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
@@ -55,19 +56,19 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     fun setUpJourneyContentButtonActions() {
         viewBinding.root.findViewById<MaterialButton>(R.id.btn1)?.run {
-            this.text = "Button 1"
+            this.text = Random.nextInt(0, 1000000).toString()
             setOnClickListener {
                 navigateToDestination(R.id.journeyFirstFragment)
             }
         }
         viewBinding.root.findViewById<MaterialButton>(R.id.btn4)?.run {
-            this.text = "Button 4"
+            this.text = Random.nextInt(0, 1000000).toString()
             setOnClickListener {
                 navigateToDestination(R.id.journeyFirstFragment)
             }
         }
         viewBinding.root.findViewById<MaterialButton>(R.id.btn7)?.run {
-            this.text = "Button 7"
+            this.text = Random.nextInt(0, 1000000).toString()
             setOnClickListener {
                 navigateToDestination(R.id.journeyFirstFragment)
             }
@@ -93,19 +94,19 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         }
 
         viewBinding.root.findViewById<MaterialButton>(R.id.btn3)?.run {
-            this.text = "Button 3"
+            this.text = "Nav " + Random.nextInt(0, 1000).toString()
             setOnClickListener {
                 navigateToDestination(R.id.journeyThirdFragment)
             }
         }
         viewBinding.root.findViewById<MaterialButton>(R.id.btn6)?.run {
-            this.text = "Button 6"
+            this.text = "Nav " + Random.nextInt(0, 1000).toString()
             setOnClickListener {
                 navigateToDestination(R.id.journeyThirdFragment)
             }
         }
         viewBinding.root.findViewById<MaterialButton>(R.id.btn9)?.run {
-            this.text = "Button 9"
+            this.text = "Nav " + Random.nextInt(0, 1000).toString()
             setOnClickListener {
                 navigateToDestination(R.id.journeyThirdFragment)
             }

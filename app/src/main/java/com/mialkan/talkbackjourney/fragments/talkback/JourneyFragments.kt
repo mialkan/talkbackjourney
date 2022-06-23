@@ -69,6 +69,9 @@ class JourneyThirdFragment : BaseFragment<FragmentJourneyBinding>() {
         viewBinding.bottomBar.stepPrimaryButton.setOnClickListener {
             leaveJourney()
         }
+        viewBinding.bottomBar.stepPreviousButton.setOnClickListener {
+            navigateToDestination(R.id.journeySecondFragment)
+        }
         setUpJourneyContentButtonActions()
     }
 }

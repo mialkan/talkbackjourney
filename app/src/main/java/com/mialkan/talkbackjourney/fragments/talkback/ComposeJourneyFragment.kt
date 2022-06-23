@@ -5,21 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.compositeOver
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -27,6 +21,10 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.mialkan.talkbackjourney.R
+import com.mialkan.talkbackjourney.composeviews.AppBottomAppBar
+import com.mialkan.talkbackjourney.composeviews.AppIconButton
+import com.mialkan.talkbackjourney.composeviews.AppPrimaryButton
+import com.mialkan.talkbackjourney.composeviews.AppTopAppBar
 import kotlin.random.Random
 
 class ComposeJourneyFirstFragment : Fragment() {
@@ -177,7 +175,7 @@ fun JourneyButtonRow(rowIndex: Int, navigateTo: (dest: Int) -> Unit) {
             navigateTo(R.id.journeyComposeFirstFragment)
         }) {
             Text(
-                text = "Button " + Random.nextInt(0, 1000),
+                text = Random.nextInt(0, 1000000).toString(),
             )
         }
 
@@ -193,7 +191,7 @@ fun JourneyButtonRow(rowIndex: Int, navigateTo: (dest: Int) -> Unit) {
             navigateTo(R.id.journeyComposeThirdFragment)
         }) {
             Text(
-                text = "Button " + Random.nextInt(0, 1000)
+                text = "Nav " + Random.nextInt(0, 1000)
             )
         }
     }
@@ -259,121 +257,4 @@ fun JourneyBottomBar(
             }
         }
     }
-}
-
-@Composable
-fun AppTopAppBar(
-    title: String,
-    actions: @Composable RowScope.() -> Unit = {},
-    navController: NavController,
-    navigationIconVector: ImageVector = Icons.Filled.ArrowBack,
-    navigationIcon: @Composable (() -> Unit)? = {
-        AppIconButton(onClick = { navController.popBackStack() }) {
-            Icon(
-                imageVector = navigationIconVector,
-                contentDescription = stringResource(R.string.btn_navigate_up),
-            )
-        }
-    }
-) {
-    AppTopAppBar(
-        content = {
-            Text(
-                text = title,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.semantics { heading() }
-            )
-        },
-        actions = actions,
-        navController = navController,
-        navigationIconVector = navigationIconVector,
-        navigationIcon = navigationIcon
-    )
-}
-
-@Composable
-fun AppTopAppBar(
-    content: @Composable () -> Unit,
-    actions: @Composable RowScope.() -> Unit = {},
-    navController: NavController,
-    navigationIconVector: ImageVector = Icons.Filled.ArrowBack,
-    navigationIcon: @Composable (() -> Unit)? = {
-        AppIconButton(onClick = { navController.popBackStack() }) {
-            Icon(
-                imageVector = navigationIconVector,
-                contentDescription = stringResource(R.string.btn_navigate_up),
-            )
-        }
-    }
-) {
-    var barNavigationIcon = navigationIcon
-    navController.addOnDestinationChangedListener { _, _, _ ->
-        if (navController.currentBackStackEntry == null) {
-            barNavigationIcon = null
-        }
-    }
-
-    TopAppBar(
-        backgroundColor = MaterialTheme.colors.surface,
-        title = content,
-        navigationIcon = barNavigationIcon,
-        actions = actions
-    )
-}
-
-@Composable
-fun AppIconButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    IconButton(
-        onClick = onClick,
-        modifier = modifier,
-        enabled = enabled,
-        content = content
-    )
-}
-
-@Composable
-fun AppBottomAppBar(
-    modifier: Modifier = Modifier,
-    content: @Composable RowScope.() -> Unit
-) {
-    val backgroundColor = MaterialTheme.colors.surface
-    BottomAppBar(
-        modifier = modifier,
-        backgroundColor = backgroundColor,
-        contentColor = contentColorFor(backgroundColor),
-        content = content
-    )
-}
-
-@Composable
-fun AppPrimaryButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    content: @Composable RowScope.() -> Unit
-) {
-    val defaultColor = MaterialTheme.colors.primary
-    val disabledColor = MaterialTheme.colors.onPrimary
-    val colors = ButtonDefaults.buttonColors(
-        backgroundColor = contentColorFor(defaultColor),
-        contentColor = defaultColor,
-        disabledBackgroundColor = disabledColor.copy(alpha = 0.12f)
-            .compositeOver(defaultColor),
-        disabledContentColor = disabledColor
-            .copy(alpha = ContentAlpha.disabled)
-    )
-    Button(
-        onClick = onClick,
-        modifier = modifier,
-        enabled = enabled,
-        shape = RoundedCornerShape(30.dp),
-        colors = colors,
-        content = content
-    )
 }
