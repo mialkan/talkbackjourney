@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import com.mialkan.talkbackjourney.R
 import com.mialkan.talkbackjourney.databinding.FragmentJourneyBinding
+import com.mialkan.talkbackjourney.databinding.FragmentThirdJourneyBinding
 import com.mialkan.talkbackjourney.fragments.BaseFragment
 
 class JourneyFirstFragment : BaseFragment<FragmentJourneyBinding>() {
@@ -31,6 +32,14 @@ class JourneyFirstFragment : BaseFragment<FragmentJourneyBinding>() {
         }
         setUpJourneyContentButtonActions()
     }
+
+    companion object {
+        fun newInstance(): JourneyFirstFragment = JourneyFirstFragment().apply {
+            arguments = Bundle().apply {
+                putBoolean("isNotSupportingNavigation", true)
+            }
+        }
+    }
 }
 
 class JourneySecondFragment : BaseFragment<FragmentJourneyBinding>() {
@@ -52,13 +61,21 @@ class JourneySecondFragment : BaseFragment<FragmentJourneyBinding>() {
         }
         setUpJourneyContentButtonActions()
     }
+
+    companion object {
+        fun newInstance(): JourneySecondFragment = JourneySecondFragment().apply {
+            arguments = Bundle().apply {
+                putBoolean("isNotSupportingNavigation", true)
+            }
+        }
+    }
 }
 
-class JourneyThirdFragment : BaseFragment<FragmentJourneyBinding>() {
+class JourneyThirdFragment : BaseFragment<FragmentThirdJourneyBinding>() {
     override fun createViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentJourneyBinding = FragmentJourneyBinding.inflate(inflater, container, false)
+    ): FragmentThirdJourneyBinding = FragmentThirdJourneyBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -73,5 +90,13 @@ class JourneyThirdFragment : BaseFragment<FragmentJourneyBinding>() {
             navigateToDestination(R.id.journeySecondFragment)
         }
         setUpJourneyContentButtonActions()
+    }
+
+    companion object {
+        fun newInstance(): JourneyThirdFragment = JourneyThirdFragment().apply {
+            arguments = Bundle().apply {
+                putBoolean("isNotSupportingNavigation", true)
+            }
+        }
     }
 }

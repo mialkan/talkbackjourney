@@ -14,6 +14,13 @@
         android:theme="@style/Theme.TalkBackJourney"
         tools:targetApi="31">
         <activity
+            android:name=".TalkBackFragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TalkBackActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

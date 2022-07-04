@@ -13,21 +13,25 @@ fun Fragment.setupToolbar(
     clickListener: View.OnClickListener? = null
 ) {
     view?.findViewById<Toolbar>(R.id.toolbar)?.apply {
-        val navController = findNavController()
-        setupWithNavController(
-            navController
-        )
-        clickListener?.let { listener -> setNavigationOnClickListener(listener) }
-        navController.addOnDestinationChangedListener { _, _, _ ->
-            navigationIcon =
-                if (navController.currentBackStackEntry == null) {
-                    null
-                } else {
-                    ContextCompat.getDrawable(
-                        context,
-                        if (showCloseNavIcon) R.drawable.ic_close else R.drawable.ic_back
-                    )
-                }
+        try {
+            val navController = findNavController()
+            setupWithNavController(
+                navController
+            )
+            clickListener?.let { listener -> setNavigationOnClickListener(listener) }
+            navController.addOnDestinationChangedListener { _, _, _ ->
+                navigationIcon =
+                    if (navController.currentBackStackEntry == null) {
+                        null
+                    } else {
+                        ContextCompat.getDrawable(
+                            context,
+                            if (showCloseNavIcon) R.drawable.ic_close else R.drawable.ic_back
+                        )
+                    }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 }
