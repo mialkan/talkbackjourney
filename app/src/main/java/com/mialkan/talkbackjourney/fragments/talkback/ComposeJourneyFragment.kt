@@ -53,6 +53,12 @@ class ComposeJourneyFirstFragment : Fragment() {
             }
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // !TextUtils.equals(accessibilityPaneTitle, mAccessibilityPaneTitle) title should be different.
+        view.accessibilityPaneTitle = "Fragment 1 ${System.currentTimeMillis()}"
+    }
 }
 
 class ComposeJourneySecondFragment : Fragment() {
@@ -77,6 +83,11 @@ class ComposeJourneySecondFragment : Fragment() {
             }
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.accessibilityPaneTitle = "Fragment 2 ${System.currentTimeMillis()}"
+    }
 }
 
 class ComposeJourneyThirdFragment : Fragment() {
@@ -100,6 +111,11 @@ class ComposeJourneyThirdFragment : Fragment() {
                 )
             }
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.accessibilityPaneTitle = "Fragment 3 ${System.currentTimeMillis()}"
     }
 }
 

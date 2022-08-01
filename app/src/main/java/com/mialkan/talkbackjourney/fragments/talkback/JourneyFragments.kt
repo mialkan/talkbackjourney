@@ -31,6 +31,8 @@ class JourneyFirstFragment : BaseFragment<FragmentJourneyBinding>() {
             navigateToDestination(R.id.journeySecondFragment)
         }
         setUpJourneyContentButtonActions()
+        // !TextUtils.equals(accessibilityPaneTitle, mAccessibilityPaneTitle) title should be different.
+        view.accessibilityPaneTitle = "Fragment 1 ${System.currentTimeMillis()}"
     }
 
     companion object {
@@ -60,6 +62,7 @@ class JourneySecondFragment : BaseFragment<FragmentJourneyBinding>() {
             navigateToDestination(R.id.journeyThirdFragment)
         }
         setUpJourneyContentButtonActions()
+        view.accessibilityPaneTitle = "Fragment 2 ${System.currentTimeMillis()}"
     }
 
     companion object {
@@ -90,6 +93,8 @@ class JourneyThirdFragment : BaseFragment<FragmentThirdJourneyBinding>() {
             navigateToDestination(R.id.journeySecondFragment)
         }
         setUpJourneyContentButtonActions()
+
+        view.accessibilityPaneTitle = "Fragment 3 ${System.currentTimeMillis()}"
     }
 
     companion object {
