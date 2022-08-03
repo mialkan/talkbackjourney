@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.appcompat.widget.Toolbar
 import com.mialkan.talkbackjourney.R
 import com.mialkan.talkbackjourney.databinding.FragmentJourneyBinding
@@ -32,7 +33,11 @@ class JourneyFirstFragment : BaseFragment<FragmentJourneyBinding>() {
         }
         setUpJourneyContentButtonActions()
         // !TextUtils.equals(accessibilityPaneTitle, mAccessibilityPaneTitle) title should be different.
-        view.accessibilityPaneTitle = "Fragment 1 ${System.currentTimeMillis()}"
+        // view.accessibilityPaneTitle = "Fragment 1 ${System.currentTimeMillis()}"
+        val event = AccessibilityEvent.obtain()
+        event.eventType = AccessibilityEvent.TYPE_WINDOWS_CHANGED
+        event.contentChangeTypes = AccessibilityEvent.TYPE_WINDOWS_CHANGED
+        activity?.window?.decorView?.sendAccessibilityEventUnchecked(event)
     }
 
     companion object {
